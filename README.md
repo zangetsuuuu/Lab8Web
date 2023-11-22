@@ -103,7 +103,7 @@ if ($conn == false) {
 ### Menampilkan Data (Read)
 
 - Buat file dengan nama *index.php*
-- `include("koneksi.php) berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. Bagian ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
+- `include("koneksi.php)` berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. Bagian ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
 - Bagian kedua membuat permintaan data ke database menggunakan fungsi `mysqli_query()`. Fungsi ini menerima dua parameter: `$conn`, `$sql`. Dalam contoh ini, permintaan SQL adalah `SELECT * FROM data_barang` yang berarti mengambil semua data dari tabel `data_barang`.
 - Mengolah hasil permintaan data menggunakan fungsi `mysqli_fetch_array()`. Fungsi ini mengambil baris berikutnya dari hasil permintaan data dan mengembalikannya sebagai array asosiatif. Fungsi `mysqli_fetch_array()` akan terus mengambil baris berikutnya hingga tidak ada lagi baris yang tersisa.
 
