@@ -76,7 +76,7 @@ Buat folder lab8_php_database pada root directory web server (d:\xampp\htdocs). 
 
 - Buat file baru dengan nama *koneksi.php*
 - Deklarasi variabel yang menyimpan informasi tentang server database, pengguna, kata sandi, dan database yang akan dihubungkan. Variabel-variabel tersebut adalah: `$host`, `$user`, `$db`, `$pass`.
-- Membuat koneksi ke database MySQL menggunakan fungsi mysqli_connect(). Fungsi ini menerima empat parameter.
+- Membuat koneksi ke database MySQL menggunakan fungsi `mysqli_connect()`. Fungsi ini menerima empat parameter.
 - Jika koneksi berhasil, kode akan menampilkan pesan "Koneksi ke server berhasil". Jika koneksi gagal, kode akan menampilkan pesan "Koneksi ke server gagal" dan menghentikan eksekusi kode.
 
 ```php
@@ -178,7 +178,7 @@ $result = mysqli_query($conn, $sql);
 
 - Buat file dengan nama *tambah.php*
 - `include_once("koneksi.php") berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. File ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
-- `if (isset($_POST["NAMA])) {}` berfungsi untuk memeriksa data dari formulir yang dikirimkan oleh pengguna. Data yang diperiksa adalah nama, kategori, harga beli, harga jual, stok, dan gambar.
+- `if (isset($_POST["nama"])) {}` berfungsi untuk memeriksa data dari formulir yang dikirimkan oleh pengguna. Data yang diperiksa adalah nama, kategori, harga beli, harga jual, stok, dan gambar.
 - `if ($file_gambar['error] == 0) {}` berfungsi untuk memproses upload gambar. Jika gambar berhasil diunggah, maka gambar akan disimpan di folder `gambar` dengan nama yang unik.
 - `$sql = 'INSERT INTO...`, `$sql .= "VALUE..."` berfungsi untuk membuat permintaan SQL untuk menambahkan data baru ke database. Permintaan SQL ini berisi data yang telah diperiksa sebelumnya.
 - `$result = mysqli_query()` berfungsi untuk meneruskan ke halaman index setelah data baru berhasil ditambahkan ke database.qqqq
@@ -339,7 +339,13 @@ if (isset($_POST["nama"])) {
 
 ### Mengubah Data (Update)
 
-Buat file dengan nama *ubah.php*
+- Buat file dengan nama *ubah.php*
+- `include_once("koneksi.php") berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. File ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
+- `if (isset($_POST["submit"])) {}` berfungsi untuk memeriksa data dari formulir yang dikirimkan oleh pengguna. Data yang diperiksa adalah nama, kategori, harga beli, harga jual, stok, dan gambar.
+- `$sql = 'UPDATE data_barang SET'...` berfungsi untuk memperbarui data barang di database MySQL. Kode ini terdiri dari beberapa baris, yang masing-masing baris digunakan untuk menentukan data mana yang akan diperbarui dan bagaimana data tersebut akan diperbarui.
+- `$id = $_GET['id']...` berfungsi untuk mengambil data barang yang akan diubah berdasarkan id barang yang dikirimkan melalui parameter `GET`. Data barang yang diambil disimpan dalam variabel `$data`.
+- `mysqli_fetch_array()` berfungsi untuk mengambil data dari database MySQL. Fungsi ini menerima parameter `$result`, yaitu hasil dari query SQL yang sebelumnya telah dijalankan. Fungsi ini akan mengembalikan sebuah array yang berisi data yang diambil dari database MySQL.
+- `is_select()` berfungsi untuk menerima dua parameter, yaitu `$var` dan `$val`. Parameter $var adalah nilai yang akan dibandingkan dengan nilai `$val`. Jika nilai `$var` sama dengan nilai `$val`, maka fungsi ini akan mengembalikan string `selected = "selected"`. Jika nilai $var tidak sama dengan nilai `$val`, maka fungsi ini akan mengembalikan nilai *false*.
 
 ```php
 <?php
@@ -518,7 +524,11 @@ function is_select($var, $val)
 
 ### Menghapus Data (Delete)
 
-Buat file dengan nama *hapus.php*
+- Buat file dengan nama *hapus.php*
+- `include_once("koneksi.php") berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. File ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
+- `$id = $_GET['id']...` berfungsi untuk mengambil data barang yang akan diubah berdasarkan id barang yang dikirimkan melalui parameter `GET`. Data barang yang diambil disimpan dalam variabel `$data`.
+- `DELETE FROM` untuk menghapus data dari tabel `data_barang`. Klausa WHERE menentukan kondisi untuk mengidentifikasi data yang akan dihapus berdasarkan ID barang yang diambil `id_barang = '{$id}'`.
+- `header('location: index.php');` berfungsi untuk mengarahkan pengguna ke halaman `index.php`. Halaman ini kemungkinan berfungsi sebagai halaman utama atau dasbor untuk mengelola data.
 
 ```php
 <?php
@@ -529,4 +539,8 @@ $result = mysqli_query($conn, $sql);
 header('location: index.php');
 ?>
 ```
+
+---
+
+## Sekian, terimakasih.
 
