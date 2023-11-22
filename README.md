@@ -74,7 +74,10 @@ Buat folder lab8_php_database pada root directory web server (d:\xampp\htdocs). 
 
 ### Membuat File Koneksi Database
 
-Buat file baru dengan nama *koneksi.php*
+- Buat file baru dengan nama *koneksi.php*
+- Deklarasi variabel yang menyimpan informasi tentang server database, pengguna, kata sandi, dan database yang akan dihubungkan. Variabel-variabel tersebut adalah: `$host`, `$user`, `$db`, `$pass`.
+- Membuat koneksi ke database MySQL menggunakan fungsi mysqli_connect(). Fungsi ini menerima empat parameter.
+- Jika koneksi berhasil, kode akan menampilkan pesan "Koneksi ke server berhasil". Jika koneksi gagal, kode akan menampilkan pesan "Koneksi ke server gagal" dan menghentikan eksekusi kode.
 
 ```php
 <?php
@@ -99,7 +102,10 @@ if ($conn == false) {
 
 ### Menampilkan Data (Read)
 
-Buat file dengan nama *index.php*
+- Buat file dengan nama *index.php*
+- `include("koneksi.php) berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. Bagian ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
+- Bagian kedua membuat permintaan data ke database menggunakan fungsi `mysqli_query()`. Fungsi ini menerima dua parameter: `$conn`, `$sql`. Dalam contoh ini, permintaan SQL adalah `SELECT * FROM data_barang` yang berarti mengambil semua data dari tabel `data_barang`.
+- Mengolah hasil permintaan data menggunakan fungsi `mysqli_fetch_array()`. Fungsi ini mengambil baris berikutnya dari hasil permintaan data dan mengembalikannya sebagai array asosiatif. Fungsi `mysqli_fetch_array()` akan terus mengambil baris berikutnya hingga tidak ada lagi baris yang tersisa.
 
 ```php
 <?php
@@ -170,7 +176,13 @@ $result = mysqli_query($conn, $sql);
 
 ### Menambah Data (Create)
 
-Buat file dengan nama *tambah.php*
+- Buat file dengan nama *tambah.php*
+- `include_once("koneksi.php") berfungsi untuk menghubungkan ke database menggunakan file *koneksi.php*. File ini berisi kode untuk menghubungkan ke database dan menyimpan variabel koneksi dalam variabel `$conn`.
+- `if (isset($_POST["NAMA])) {}` berfungsi untuk memeriksa data dari formulir yang dikirimkan oleh pengguna. Data yang diperiksa adalah nama, kategori, harga beli, harga jual, stok, dan gambar.
+- `if ($file_gambar['error] == 0) {}` berfungsi untuk memproses upload gambar. Jika gambar berhasil diunggah, maka gambar akan disimpan di folder `gambar` dengan nama yang unik.
+- `$sql = 'INSERT INTO...`, `$sql .= "VALUE..."` berfungsi untuk membuat permintaan SQL untuk menambahkan data baru ke database. Permintaan SQL ini berisi data yang telah diperiksa sebelumnya.
+- `$result = mysqli_query()` berfungsi untuk meneruskan ke halaman index setelah data baru berhasil ditambahkan ke database.qqqq
+
 
 ```php
 <?php
